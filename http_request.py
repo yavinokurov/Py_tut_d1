@@ -1,15 +1,14 @@
 import requests
 
 host = "https://wttr.in/"
-
+places = ['London', 'svo', 'Череповец']
 
 def print_weather(location):
-    payload = {'lang': 'ru'}
-    x = requests.get(''.join((host, location, '?M', 'nTqu')), params=payload)
-    print(x.text)
-    return True
+    payload = {'M': '', 'nTqu': '', 'lang': 'ru'}
+    response = requests.get(''.join((host, location)), params=payload)
+    print(response.text)
 
 
-print_weather('London')
-print_weather('svo')
-print_weather('Череповец')
+if __name__ == "__main__":
+    for place in places:
+        print_weather(place)
